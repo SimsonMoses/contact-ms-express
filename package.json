@@ -1,0 +1,24 @@
+{
+  "name": "my-contact-ms-express",
+  "version": "1.0.0",
+  "description": "learn express on building my-contact-ms-express project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SimsonMoses/contact-ms-express.git"
+  },
+  "keywords": [
+    "express",
+    "nodejs",
+    "backend"
+  ],
+  "author": "simsonmoses",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SimsonMoses/contact-ms-express/issues"
+  },
+  "homepage": "https://github.com/SimsonMoses/contact-ms-express#readme"
+}

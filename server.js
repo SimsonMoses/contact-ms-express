@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import contantRoute from './routes/contactRoute.js';
 import { errorHandler } from './middleware/errorHandler.js';
 import connectDB from './config/db.js';
+import userRouter from './routes/userRoute.js';
 
 
 dotenv.config();
@@ -13,6 +14,7 @@ app.use(express.json())
 const port = process.env.PORT || 5000
 connectDB()
 app.use('/api/contact',contantRoute)
+app.use('/api/user',userRouter)
 // app.get('/api/contact/get-all',(req,res)=>{
 //     res.send('hello')
 // })

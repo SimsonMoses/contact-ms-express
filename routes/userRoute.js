@@ -1,10 +1,11 @@
 
 import express from 'express';
-import { createUser } from './../controller/userController.js';
+import { createUser,login,me } from './../controller/userController.js';
+import { validTokenHandler } from '../middleware/validTokenHandler.js';
 const router = express.Router();
 
 router.route('/').post(createUser);
-// router.route('/').post(login);
-// router.route('/me').get(me)
+router.route('/login').post(login);
+router.get('/me',validTokenHandler,me);
 
 export default router;

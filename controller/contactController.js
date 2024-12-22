@@ -11,13 +11,15 @@ export const createContant = async (req, res) => {
     const contact = await Contact.create({
         name,
         email,
-        phone
-    })
+        phone,
+        user_id: req.user.id
+    })  
     res.status(201).json({ 'message': `created contact`, data:{id:contact.id}});
 }
 
 export const getAllContant = async (req, res) => {
-    let contacts = await Contact.find();
+    const {id} = req.user;
+    let contacts = await Contact.find({user_id:id});
     res.status(200).json({ 'message': "get all contacts",data:contacts });
 }
 
@@ -27,6 +29,10 @@ export const updatedContant = async (req, res) => {
     if(!contact) {
         res.status(404)
         throw new Error('Contact Id not found')
+    }
+    if(contact.user_id != req.user.id){
+        res.status(403)
+        throw new Error('You are not authorized to update this contact')
     }
     const udpatedContact = await Contact.findByIdAndUpdate(
         req.params.id,
@@ -41,6 +47,10 @@ export const deleteContant = expressAsyncHandler(async (req, res) => {
     if(!contact) {
         res.status(404)
         throw new Error('Contact Id not found')
+    }
+    if(contact.user_id != req.user.id){
+        res.status(403)
+        throw new Error('You are not authorized to update this contact')
     }
     let deletedContact = await Contact.findByIdAndDelete(contact.id)
     console.log(deleteContant);

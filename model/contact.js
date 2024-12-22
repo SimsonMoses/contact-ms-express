@@ -13,6 +13,10 @@ const contactSchema = new mongoose.Schema({
     phone:{
         type:String,
         required:[true,'phone field is mandatory']
+    },
+    user_id:{
+        type:String,
+        ref:'User'
     }
 },{
     timestamps:true
